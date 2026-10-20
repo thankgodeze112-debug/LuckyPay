@@ -1,0 +1,142 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ThankGod LuckyPay - LIVE</title>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}body{background:#0A3D9E}
+.splash{position:fixed;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999}
+.splash img{width:200px;border-radius:18px}
+.page{display:none;min-height:100vh}.show{display:block!important}
+.welcome{position:relative;min-height:100vh;background:#0A3D9E;display:flex;flex-direction:column}
+.welcome img{width:100%;height:auto;display:block}
+.welcome-btns{padding:16px;background:linear-gradient(transparent,#0A3D9E 20%);margin-top:-60px;position:relative;z-index:2}
+.btn{border:0;padding:14px;border-radius:14px;font-weight:800;cursor:pointer;width:100%;font-size:15px;margin:6px 0;display:block;text-align:center;text-decoration:none}
+.btn-gold{background:#ffda36;color:#0A3D9E}.btn-white{background:#fff;color:#0A3D9E;border:2px solid #0A3D9E}.btn-green{background:#25D366;color:#fff}
+.card{background:#fff;border-radius:16px;padding:14px;box-shadow:0 2px 12px rgba(0,0,0,.08);margin:10px}
+.wallet{background:linear-gradient(135deg,#0A3D9E,#1e4fd8);color:#fff;border-radius:20px;padding:18px}
+.badge{background:#25D366;color:#fff;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:700;display:inline-block}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 10px}.act{background:#fff;border-radius:14px;padding:12px 4px;text-align:center;box-shadow:0 1px 6px rgba(0,0,0,.04);cursor:pointer}.act b{font-size:12px}
+input,select{width:100%;padding:12px;border:1.5px solid #dbe4ff;border-radius:10px;margin:6px 0}
+.auth{padding:14px;min-height:100vh;background:#eef2ff}.dash{padding:14px;min-height:100vh;background:#eef2ff}
+.refer{background:#fffbe5;border:1px solid #ffe58a;border-radius:14px;padding:12px}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#0A3D9E;height:46px}
+#botBtn{position:fixed;bottom:70px;right:14px;width:58px;height:58px;background:#ffda36;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.3);z-index:500;cursor:pointer;font-size:28px;border:2px solid #0A3D9E}
+#botBox{position:fixed;bottom:140px;right:14px;width:320px;max-width:90vw;height:420px;background:#fff;border-radius:18px;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:600;display:none;flex-direction:column;overflow:hidden}
+#botHead{background:#0A3D9E;color:#fff;padding:12px;display:flex;justify-content:space-between;align-items:center}
+#botMsgs{flex:1;overflow-y:auto;padding:10px;background:#eef2ff}
+.botMsg{margin:6px 0;padding:8px 12px;border-radius:12px;font-size:13px;max-width:85%}
+.bot{ background:#fff; color:#222; border:1px solid #dbe4ff; align-self:flex-start }
+.user{ background:#0A3D9E; color:#fff; align-self:flex-end; margin-left:auto }
+#botInput{display:flex;padding:8px;background:#fff;border-top:1px solid #eee}
+#botInput input{flex:1;margin:0 6px 0 0}
+.qs{display:flex;flex-wrap:wrap;gap:4px;padding:6px}
+.qs button{font-size:11px;padding:6px 10px;border-radius:20px;border:1px solid #0A3D9E;background:#fff;color:#0A3D9E;cursor:pointer}
+.live-dot{width:8px;height:8px;background:#25D366;border-radius:50%;display:inline-block;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+</style></head><body>
+<div id="splash" class="splash"><img src="logo.png" onerror="this.style.display='none'"><div style="text-align:center;margin-top:10px"><h2 style="color:#0A3D9E;font-size:30px">ThankGod</h2><h2 style="color:#E8A317;font-size:26px">LuckyPay</h2><p style="color:#888;font-size:13px;margin-top:6px">Loading LIVE Paystack...</p></div></div>
+<div id="welcome" class="page"><div class="welcome"><img src="poster.jpg"><div class="welcome-btns">
+<a class="btn btn-gold" onclick="goAuth()">🚀 Get Started - LIVE</a>
+<a class="btn btn-green" href="https://wa.me/2349020076398?text=Hello%20ThankGod%20LuckyPay" target="_blank">💬 Chat Us: 09020076398</a>
+<a class="btn btn-white" onclick="goAuth()" style="font-size:13px">Already have account? Login</a>
+<div style="text-align:center;color:#ffda36;font-size:11px;margin-top:8px"><span class="live-dot"></span> LIVE Paystack Active<br>Referral: THANKGOD500 • Earn ₦500<br>Support: luckypaysupport9@gmail.com</div>
+</div></div></div>
+<div id="auth" class="page auth"><div style="text-align:center;margin:10px 0"><img src="logo.png" style="width:90px;border-radius:12px"><h2 style="color:#0A3D9E">ThankGod</h2><h2 style="color:#E8A317">LuckyPay</h2><p style="font-size:11px;color:#25D366;font-weight:700"><span class="live-dot"></span> LIVE PAYMENT ACTIVE</p></div>
+<div class="card"><h3>Login</h3><input id="lp" placeholder="Phone 090..."><input id="lw" type="password" placeholder="Password"><button class="btn" style="background:#0A3D9E;color:#fff" onclick="doLog()">Login</button><p style="text-align:center;margin-top:8px;font-size:12px">No account? <a href="#" onclick="document.getElementById('reg').style.display='block'">Create</a> • <a href="#" onclick="goWelcome()">Back</a></p></div>
+<div id="reg" class="card" style="display:none"><h3>Create Account</h3><input id="rn" placeholder="Full Name"><input id="rp" placeholder="Phone"><input id="remail" placeholder="Email for receipt - luckypaysupport9@gmail.com"><input id="rw" type="password" placeholder="Password"><button class="btn" style="background:#0A3D9E;color:#fff" onclick="doReg()">Create & Get ₦500</button></div></div>
+<div id="dash" class="page dash"><div style="display:flex;justify-content:space-between"><div><h2 style="color:#0A3D9E">Hello <span id="uname">ThankGod Eze</span></h2><span class="badge"><span class="live-dot"></span> LIVE - Paystack → OPay 7045041972</span></div><div style="width:44px;height:44px;background:#fff;border-radius:10px;padding:3px"><img src="logo.png" style="width:100%;height:100%;object-fit:contain"></div></div>
+<div class="wallet"><p style="text-align:center;opacity:.9;font-size:13px">Wallet Balance</p><h1 id="bal" style="text-align:center;font-size:36px;margin:6px 0">₦10,000</h1><div style="display:flex;gap:10px"><button class="btn" style="background:#ffda36;color:#0A3D9E;flex:1" onclick="fund()">+ Fund LIVE</button><button class="btn" style="background:#fff;color:#0A3D9E;flex:1" onclick="openHist()">History</button></div><p style="text-align:center;font-size:10px;margin-top:8px;opacity:.9">Paystack LIVE pk_live_8ab90a... • Settles to OPay</p></div>
+<div class="grid"><div class="act" onclick="openLoan()">💰<br><b>Loan</b></div><div class="act" onclick="openAir()">📱<br><b>Airtime</b></div><div class="act" onclick="openData()">📊<br><b>Data</b></div><div class="act" onclick="openBill()">💡<br><b>Bills</b></div></div>
+<div class="refer"><div style="display:flex;gap:8px;align-items:center"><span>🎁</span><div><b>Referral: THANKGOD500</b><br><small>Earn ₦500 per friend!</small><br><small style="color:#0A3D9E;font-weight:700">Support: luckypaysupport9@gmail.com</small></div></div></div>
+<div id="loanBox" class="card" style="display:none"><b>Loan Up to 500k</b><input id="loanAmt" type="number" placeholder="Amount"><select id="loanDay"><option value="7">7 Days</option><option value="14">14 Days</option><option value="30">30 Days</option></select><button class="btn" style="background:#0A3D9E;color:#fff" onclick="getLoan()">Apply Now</button></div>
+<div id="airBox" class="card" style="display:none"><b>Airtime - LIVE PAY</b><select id="anet"><option>MTN</option><option>Airtel</option><option>Glo</option><option>9mobile</option></select><input id="aphone" placeholder="Phone"><input id="aamt" type="number" placeholder="Amount"><button class="btn" style="background:#0A3D9E;color:#fff" onclick="buyAir()">Buy Airtime LIVE</button></div>
+<div id="dataBox" class="card" style="display:none"><b>Data - LIVE PAY</b><select id="dnet"><option>MTN</option><option>Airtel</option><option>Glo</option><option>9mobile</option></select><input id="dphone" placeholder="Phone"><select id="dplan"><option value="500">1GB ₦500</option><option value="1000">2GB ₦1000</option><option value="2000">5GB ₦2000</option></select><button class="btn" style="background:#0A3D9E;color:#fff" onclick="buyData()">Buy Data LIVE</button></div>
+<div id="billBox" class="card" style="display:none"><b>Bills - EEDC First - LIVE PAY</b><select id="btype"><option>EEDC</option><option>PHED</option><option>AEDC</option><option>DSTV</option></select><input id="bmeter" placeholder="Meter No"><input id="bamt" type="number" placeholder="Amount"><button class="btn" style="background:#0A3D9E;color:#fff" onclick="payBill()">Pay Bill LIVE</button></div>
+<div id="histBox" class="card"><b>History</b><div id="hist"></div></div>
+<button class="btn" style="background:#fff;color:#0A3D9E;border:1.5px solid #0A3D9E" onclick="localStorage.clear();location.reload()">Logout</button><div style="height:90px"></div><div class="bottom"></div></div>
+<div id="botBtn" onclick="toggleBot()">🤖</div>
+<div id="botBox"><div id="botHead"><b>🤖 LuckyPay LIVE</b><span onclick="toggleBot()" style="cursor:pointer">✕</span></div>
+<div id="botMsgs"><div class="botMsg bot">Hello! LuckyPay LIVE is active! 🤖<br>Paystack LIVE → OPay 7045041972<br>Support: luckypaysupport9@gmail.com</div></div>
+<div class="qs"><button onclick="askBot('loan')">Loan 500k?</button><button onclick="askBot('airtime')">Airtime</button><button onclick="askBot('data')">Data</button><button onclick="askBot('EEDC')">EEDC Bill</button><button onclick="askBot('fund wallet')">Fund wallet LIVE</button></div>
+<div id="botInput"><input id="botQ" placeholder="Ask me anything..." onkeypress="if(event.key==='Enter')sendBot()"><button class="btn" style="width:60px;background:#0A3D9E;color:#fff;margin:0" onclick="sendBot()">Send</button></div></div>
+<script>
+const PAYSTACK_PUBLIC_KEY = 'pk_live_8ab90a4f45fbae3da157a938ad5bc1a27fa8532d';
+const SUPPORT_EMAIL = 'luckypaysupport9@gmail.com';
+let W=parseInt(localStorage.getItem('W')||'10000');let H=JSON.parse(localStorage.getItem('H')||'[]');H=H.filter(x=>x&&x.t&&x.a!=undefined);
+setTimeout(()=>{document.getElementById('splash').style.display='none';document.getElementById('welcome').classList.add('show')},2000);
+function goWelcome(){document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));document.getElementById('welcome').classList.add('show')}
+function goAuth(){document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));document.getElementById('auth').classList.add('show')}
+function doReg(){let n=document.getElementById('rn').value,p=document.getElementById('rp').value,w=document.getElementById('rw').value,em=document.getElementById('remail').value;if(!n||!p||!w){alert('Fill all');return}localStorage.setItem('U',JSON.stringify({n,p,w,em:em||SUPPORT_EMAIL}));localStorage.setItem('W','10000');W=10000;H=[];localStorage.setItem('H','[]');goDash(n)}
+function doLog(){let p=document.getElementById('lp').value,w=document.getElementById('lw').value;let u=JSON.parse(localStorage.getItem('U')||'null');if(u&&u.p==p&&u.w==w){goDash(u.n)}else{goDash('ThankGod Eze')}}
+function goDash(name){document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));document.getElementById('dash').classList.add('show');document.getElementById('uname').innerText=name;document.getElementById('bal').innerText='₦'+W.toLocaleString();renderHist()}
+function save(){localStorage.setItem('W',W);localStorage.setItem('H',JSON.stringify(H));document.getElementById('bal').innerText='₦'+W.toLocaleString();renderHist()}
+function renderHist(){let h=document.getElementById('hist');if(!H||H.length==0){h.innerHTML='<p style=color:#999;font-size:12px;margin-top:8px>No transaction yet. Click + Fund LIVE to add real money via Paystack!</p>';return}h.innerHTML=H.slice(-10).reverse().map(x=>`<div style=display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee><div><b>${x.t}</b><br><small>${x.d}</small></div><b style=color:${x.a>0?'green':'red'}>${x.a>0?'+':''}₦${Math.abs(x.a).toLocaleString()}</b></div>`).join('')}
+function payWithPaystack(amount, email, description, onSuccess){
+ if(!amount || amount<100){alert('Min ₦100');return}
+ email = email || SUPPORT_EMAIL;
+ if(!email.includes('@')) email=SUPPORT_EMAIL;
+ var handler = PaystackPop.setup({
+   key: PAYSTACK_PUBLIC_KEY,
+   email: email,
+   amount: amount*100,
+   currency: 'NGN',
+   ref: 'LUCKY_'+Date.now()+'_'+Math.floor(Math.random()*1000000),
+   metadata: {custom_fields: [{display_name: description, variable_name: "desc", value: description}]},
+   callback: function(res){ onSuccess(res, amount); },
+   onClose: function(){}
+ });
+ handler.openIframe();
+}
+function fund(){
+ let a=parseInt(prompt('Amount to fund (Min ₦100):'));
+ if(!a||isNaN(a)||a<100){alert('Enter valid amount min ₦100');return}
+ let u=JSON.parse(localStorage.getItem('U')||'{}');
+ let email = u.em || SUPPORT_EMAIL;
+ payWithPaystack(a, email, 'Wallet Funding', function(r, amt){
+   W+=amt; H.push({t:'Wallet Top Up LIVE',d:new Date().toLocaleString()+' Ref:'+r.reference,a:amt}); save();
+   alert('✅ LIVE Fund Successful! ₦'+amt.toLocaleString()+' Ref:'+r.reference+'\nSettles to OPay 7045041972');
+ });
+}
+function openLoan(){hideAll();document.getElementById('loanBox').style.display='block'}function openAir(){hideAll();document.getElementById('airBox').style.display='block'}function openData(){hideAll();document.getElementById('dataBox').style.display='block'}function openBill(){hideAll();document.getElementById('billBox').style.display='block'}function openHist(){document.getElementById('histBox').scrollIntoView()}function hideAll(){['loanBox','airBox','dataBox','billBox'].forEach(id=>document.getElementById(id).style.display='none')}
+function getLoan(){let a=parseInt(document.getElementById('loanAmt').value);if(!a){alert('Enter amount');return}W+=a;H.push({t:'Loan '+document.getElementById('loanDay').value+' days',d:new Date().toLocaleString(),a:a});save();alert('Loan ₦'+a.toLocaleString()+' approved!')}
+function buyAir(){
+ let n=document.getElementById('anet').value,ph=document.getElementById('aphone').value,am=parseInt(document.getElementById('aamt').value);
+ if(!ph||!am){alert('Fill phone & amount');return}
+ let u=JSON.parse(localStorage.getItem('U')||'{}'); let email=u.em||SUPPORT_EMAIL;
+ payWithPaystack(am, email, n+' Airtime to '+ph, function(r, amt){
+   if(W>=amt){W-=amt;} H.push({t:n+' Airtime to '+ph,d:new Date().toLocaleString()+' Ref:'+r.reference,a:-amt}); save();
+   alert('✅ Airtime LIVE Paid! ₦'+amt+' to '+ph+' Ref:'+r.reference);
+ });
+}
+function buyData(){
+ let n=document.getElementById('dnet').value,ph=document.getElementById('dphone').value,pl=document.getElementById('dplan');
+ let txt=pl.options[pl.selectedIndex].text; let am=parseInt(pl.value);
+ if(!ph){alert('Enter phone');return}
+ let u=JSON.parse(localStorage.getItem('U')||'{}'); let email=u.em||SUPPORT_EMAIL;
+ payWithPaystack(am, email, n+' '+txt+' to '+ph, function(r, amt){
+   if(W>=amt){W-=amt;} H.push({t:n+' Data '+txt+' to '+ph,d:new Date().toLocaleString()+' Ref:'+r.reference,a:-amt}); save();
+   alert('✅ Data LIVE Paid! '+txt+' to '+ph+' Ref:'+r.reference);
+ });
+}
+function payBill(){
+ let t=document.getElementById('btype').value,m=document.getElementById('bmeter').value,am=parseInt(document.getElementById('bamt').value);
+ if(!m||!am){alert('Fill meter & amount');return}
+ let u=JSON.parse(localStorage.getItem('U')||'{}'); let email=u.em||SUPPORT_EMAIL;
+ payWithPaystack(am, email, t+' Bill Meter:'+m, function(r, amt){
+   if(W>=amt){W-=amt;} H.push({t:t+' Bill',d:'Meter:'+m+' Ref:'+r.reference,a:-amt}); save();
+   alert('✅ Bill LIVE Paid! '+t+' Meter:'+m+' Ref:'+r.reference);
+ });
+}
+function toggleBot(){let b=document.getElementById('botBox');b.style.display=b.style.display==='flex'?'none':'flex'}
+function askBot(t){document.getElementById('botQ').value=t;sendBot()}
+function sendBot(){let q=document.getElementById('botQ').value.trim();if(!q)return;let box=document.getElementById('botMsgs');box.innerHTML+=`<div class="botMsg user">${q}</div>`;document.getElementById('botQ').value='';let a=botReply(q.toLowerCase());setTimeout(()=>{box.innerHTML+=`<div class="botMsg bot">${a}</div>`;box.scrollTop=box.scrollHeight},400);box.scrollTop=box.scrollHeight}
+function botReply(t){
+ if(t.includes('loan')) return "💰 <b>Instant Loan up to ₦500k!</b><br>Dashboard → Loan → Apply!";
+ if(t.includes('airtime')) return "📱 <b>Airtime LIVE</b><br>Now with Paystack LIVE! MTN, Airtel, Glo, 9mobile → LIVE Pay.";
+ if(t.includes('data')) return "📊 <b>Data LIVE</b><br>1GB ₦500. LIVE Paystack.";
+ if(t.includes('eedc')||t.includes('bill')) return "💡 <b>EEDC LIVE</b><br>Paystack LIVE → OPay 7045041972<br>Dashboard → Bills.";
+ if(t.includes('refer')) return "🎁 <b>THANKGOD500</b><br>Share app link, Earn ₦500!";
+ if(t.includes('fund')||t.includes('wallet')) return "💳 <b>Wallet LIVE</b><br>Click + Fund LIVE → Paystack popup → Real money to OPay 7045041972. Support: luckypaysupport9@gmail.com";
+ if(t.includes('whatsapp')) return "💬 <b>09020076398</b><br><a href='https://wa.me/2349020076398' target='_blank'>Open WhatsApp →</a><br>Support: luckypaysupport9@gmail.com";
+ return "🤖 LIVE active! Try: loan, airtime, data, EEDC, fund wallet LIVE. Support: luckypaysupport9@gmail.com<br>WhatsApp: 09020076398";
+}
+</script></body></html>
